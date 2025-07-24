@@ -1,10 +1,14 @@
-# 准备环境
+# VuePress
+
+## 准备环境
+
 1. Node.js v18.19.0+
 1. npm
 1. Git
 1. 新建一个名为 `<username>.github.io` 的仓库
+1. 配置 GitHub 密钥
 
-## Git 配置密钥
+### 配置 GitHub 密钥
 
 1. 生成SSH密钥  
 ```bash
@@ -13,7 +17,7 @@ ssh-keygen -t rsa -f ~/.ssh/id_rsa -C "youremail"
 2. 添加 SSH 密钥到平台  
 将生成的公钥`id_rsa.pub`添加到 GitHub [设置][https://github.com/settings/keys]中
 
-# 创建项目
+## 创建项目
 
 ```bash
 npm init vuepress <username>.github.io
@@ -38,31 +42,43 @@ git init
 @tab .gitignore
 ```
 # VuePress 默认临时文件目录
-.vuepress/.temp
+docs/.vuepress/.temp
 # VuePress 默认缓存目录
-.vuepress/.cache
+docs/.vuepress/.cache
 # VuePress 默认构建生成的静态文件目录
-.vuepress/dist
+docs/.vuepress/dist
+# 依赖
+node_modules
 ```
 
 @tab 提交代码并上传到GitHub
 ```bash
 git add.
 git commit -m "Initial commit"
+git checkout -b main # 创建 main 分支
 git remote add origin https://github.com/<username>/<username>.github.io.git
-git push -u origin HEAD # 首次推送默认分支并设置上游
+git push -u origin main # 首次推送 main 分支并设置上游
 ```
 :::
 
-# 使用VuePress
+## 部署
+Settings > Pages > Build and deployment，设置Source为 Deploy from a brach，分支设置为gh-pages。
 
-## 启动开发环境
+## 使用VuePress
+
+### 启动开发环境
 ```bash
 npm run docs:dev
 ```
 
-构建静态网站
+### 构建静态网站
 ```bash
 npm run docs:build
 ```
+
+## 配置VuePress
+
+### 基本配置
+
+VuePress 站点的基本配置文件是 `/docs/.vuepress/config.js`，在.`/docs/.vuepress/config.js`文件中，我们可以配置 VuePress 的基本信息、主题、插件、markdown渲染器等。
 
