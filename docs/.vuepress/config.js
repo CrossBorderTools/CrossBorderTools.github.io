@@ -11,7 +11,23 @@ export default defineUserConfig({
   theme: defaultTheme({
     logo: 'https://vuejs.press/images/hero.png',
 
-    navbar: ['/', '/vuepress'],
+    navbar: ['/', '/vuepress','/ai_agent/'],
+    sidebar:{
+      '/ai_agent':[
+        'index',
+        {
+          text: 'Coze',
+          link: 'coze/',
+          prefix: 'coze/',
+          children:[
+            'workflow',
+            'prompt',
+            'plugin',
+            'knowledge_base'
+          ]
+        }
+      ]
+    }
   }),
 
   bundler: viteBundler(),
